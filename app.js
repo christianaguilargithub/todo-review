@@ -57,7 +57,9 @@ app.get('/', (req, res) => {
 //register a new user
 app.post('/users', (req, res) => {
 	//check for duplicate username or email prior to registration
-	let dupes = User.find({$or: [{username: req.body.username}, {email: req.body.email}]} , (err, duplicates) => {
+	User.find({$or: [{username: req.body.username}, {email: req.body.email}]} , (findErr, duplicates) => {
+		//if an error was encountered during querying for the user, out error in console
+		if(findErr) return console.error(findErr);
 		//if duplicates found
 		if(duplicates.length > 0){
 			//return a status 403 - forbidden, with accompanying json with a message property
@@ -74,19 +76,19 @@ app.post('/users', (req, res) => {
 				tasks: []
 			})
 
-			newUser.save((err, newUser)=>{
+			newUser.save((saveErr, newUser)=>{
 				//if an error was encountered while saving the document,
 				//output the error in the console
-				if(err) return console.error(err);
+				if(saveErr) return console.error(saveErr);
 				//return a response with http status code 201 - successful creation
 				//and a json that has a message, data containing the newly created User details, and a link to show the newly created user
 				return res.status(201).json({
 					message: `User ${newUser.username} successfully registered.`,
 					data: {
 						username: newUser.username,
-						email: newUser.email
-					},
-					link: `/users/${newUser._id}`
+						email: newUser.email,
+						link_to_self: `/users/${newUser._id}`
+					} 
 				});
 			})
 		}
@@ -130,23 +132,29 @@ app.get('/users/:userId/tasks', (req, res) => {
 //create a new task for a particular user
 app.post('/users/:userId/tasks', (req, res) => {
 	//find the user who will register a new task
-	User.findById(req.params.userId, (err, user) => {
-		if(err) return console.error(err);
-
+	User.findById(req.params.userId, (findErr, user) => {
+		if(findErr) return console.error(findErr);
+		//if user currently has no tasks
 		if(user.tasks === []){
+			//add the new task as a subdocument to the tasks array
 			user.tasks.push({
 				name: req.body.name
 			});
-			user.save((err, modifiedUser)=>{
-				if(err) return console.error(err);
+			user.save((saveErr, modifiedUser)=>{
+				if(saveErr) return console.error(saveErr);
 				return res.status(200).json({
 					message: `${user.tasks[0].name} added to task list of ${user.username}.`,
-					data: modifiedUser.tasks
+					data: modifiedUser.tasks[0]
 				})
 			});
 		}else{
 			//look for duplicate tasks
+			//the keyword return was not used because no {} were used to define function scope
 			let dupes = user.tasks.filter(task => task.name.toLowerCase() === req.body.name.toLowerCase());
+			//the above can be rewritten as 
+				/*let dupes = user.tasks.filter(task => {
+					return task.name.toLowerCase() === req.body.name.toLowerCase()
+				})*/
 			//if duplicates found
 			if(dupes.length > 0){
 				return res.status(403).json({
@@ -157,11 +165,11 @@ app.post('/users/:userId/tasks', (req, res) => {
 				user.tasks.push({
 					name: req.body.name
 				});
-				user.save((err, modifiedUser)=>{
-					if(err) return console.error(err);
+				user.save((saveErr, modifiedUser)=>{
+					if(saveErr) return console.error(saveErr);
 					return res.status(200).json({
-						message: `${user.tasks[user.tasks.length-1].name} added to task list of ${user.username}.`,
-						data: modifiedUser.tasks
+						message: `${modifiedUser.tasks[modifiedUser.tasks.length-1].name} added to task list of ${user.username}.`,
+						data: modifiedUser.tasks[modifiedUser.tasks.length-1]
 					})
 				});
 			}

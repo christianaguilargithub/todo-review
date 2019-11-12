@@ -177,6 +177,66 @@ app.post('/users/:userId/tasks', (req, res) => {
 	});
 })
 
+//get details of a specific task of a user
+app.get('/users/:userId/tasks/:taskId', (req, res) => {
+	User.findById(req.params.userId, (findErr, user) =>{
+		if(findErr) return console.error(findErr);
+		let task = user.tasks.id(req.params.taskId);
+		if(task === null){
+			return res.status(403).json({
+				message: `Task with id ${req.params.taskId} cannot be found`
+			})
+		}else{
+			return res.status(200).json({
+				message: `Task with id ${req.params.taskId} found.`,
+				data: task
+			})
+		}
+	})
+})
 
+//update task
+app.put('/users/:userId/tasks/:taskId', (req, res) => {
+	User.findById(req.params.userId, (findErr, user) => {
+		if(findErr) return console.error(findErr);
+		let task = user.tasks.id(req.params.taskId);
+		if(task === null){
+			return res.status(403).json({
+				message: `Task with id ${req.params.taskId} cannot be found`
+			})
+		}else{
+			if((typeof req.body.name === "string" && req.body.name !== "") && (typeof req.body.status === "string" && req.body.status !== "")){
+				task.name = req.body.name;
+				task.status = req.body.status;
+				user.save((saveErr, modifiedUser) => {
+					if(saveErr) return console.error(saveErr);
+					return res.status(200).json({
+						message: `Task with id ${req.params.taskId} updated successfully.`,
+						data: task
+					})
+				}) 
+			}else{
+				return res.status(403).json({
+					message: "Task name and task status are both required fields."
+				})
+			}
+		}
+	})
+})
+
+//delete task
+app.delete('/users/:userId/tasks/:taskId', (req, res) => {
+	User.findById(req.params.userId, (findErr, user) => {
+		if(findErr) return console.error(findErr);
+		user.tasks.id(req.params.taskId).remove();
+		user.save((saveErr, modifiedUser) => {
+			if(saveErr) return console.error(saveErr);
+			return res.status(200).json({
+				message: `Task with id ${req.params.taskId} deleted successfully.`,
+				data: modifiedUser.tasks
+			})
+		})
+	})
+})
 
 app.listen(port, () => console.log(`You got served on port ${port}!`));

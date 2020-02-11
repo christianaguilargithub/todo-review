@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+body{
+font-family: 'Poppins', sans-serif;
+margin: 0;
+padding: 0;
+background: url(desktopPortfolio1.jpg);
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+}
+
+header{
+	position: relative;
+	max-width: 99%;
+	margin: 20px auto;
+	padding: 10px;
+	background: #fff;
+	box-sizing: border-box;
+	border-radius: 4px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.2);
+
+}
+
+
+
+/*------------------NavBar------------------------- */
+
+.logo
+{
+	color: #069370;
+	height: 50px;
+	font-size: 36px;
+	line-height: 60px;
+	padding: 0 20px;
+	text-align: center;
+	box-sizing: border-box;
+	float: left;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+nav {
+	float: right;
+}
+
+.clearfix
+{
+	clear: both;
+}
+nav ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+nav ul li {
+	list-style-type: none;
+}
+
+
+nav ul li a{
+	display: block;
+	padding: 10px 10px;
+	text-decoration: none;
+	color: #262626;
+}
+
+nav ul li a.active,
+nav ul li a:hover
+{
+	background: #069370;
+	color: #fff;
+	transition: 0.5s;
+}
+
+@media (max-width: 1200px)
+{
+	header{
+		margin: 20px;
+	}
+}
+
+/*------------------NavBar----------------------------------------------*/
+/*------------------Name and Job---------------------------------------------*/
+
+.name {
+  background-color: white;
+  color: black;
+  font-size: 7vw; /* Responsive font size */
+  font-weight: bold;
+  margin: auto; /* Center the text container */
+  /*padding: 10px;*/
+  width: 100%;
+  text-align: center; /* Center text */
+  position: absolute; /* Position text */
+  top: 60%; /* Position text in the middle */
+  left: 50%; /* Position text in the middle */
+  transform: translate(-50%, -50%); /* Position text in the middle */
+  mix-blend-mode: screen; /* This makes the cutout text possible */
+}
+.job {
+  background-color: white;
+  color: black;
+  font-size: 3vw; /* Responsive font size */
+  font-weight: bold;
+  margin: auto; /* Center the text container */
+  /*padding: 10px;*/
+  width: 100%;
+  text-align: center; /* Center text */
+  position: absolute; /* Position text */
+  top: 70%; /* Position text in the middle */
+  left: 50%; /* Position text in the middle */
+  transform: translate(-50%, -50%); /* Position text in the middle */
+}
+
+/*------------------Name and Job---------------------------------------------*/
+
+
+
+@media (max-width: 768px)
+{	
+
+	header{
+	position: relative;
+	max-width: 97%;
+	margin: 20px auto;
+	padding: 10px;
+	background: #fff;
+	box-sizing: border-box;
+	border-radius: 4px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.2);
+	}
+
+	.menu-toggle
+	{
+		display: block;
+		width: 40px;
+		height: 40px;
+		margin: 10px;
+		float: right;
+		cursor: pointer;
+		text-align: center;
+		font-size: 30px;
+		color: #069370;
+	}
+
+	.menu-toggle:before{
+		content: '\f00d';
+		font-family: fontAwesome;
+		line-height: 40px;
+	}
+
+	.menu-toggle.active:before{
+		content: '\f0c9';
+		
+	}
+
+	nav{
+		display: none;
+	}
+	nav.active{
+		display: block;
+		width: 100%;
+	}
+	nav.active ul{
+		display: block;
+
+	
+	}
+
+	nav.active ul li{
+		margin: 0;
+	}
+
+
+
+
+
+
+.name {
+  background-color: white;
+  color: black;
+  font-size: 7vw; /* Responsive font size */
+  font-weight: bold;
+  margin: auto; /* Center the text container */
+  /*padding: 10px;*/
+  width: 100%;
+  text-align: center; /* Center text */
+  position: absolute; /* Position text */
+  top: 60%; /* Position text in the middle */
+  left: 50%; /* Position text in the middle */
+  transform: translate(-50%, -50%); /* Position text in the middle */
+  mix-blend-mode: screen; /* This makes the cutout text possible */
+}
+.job {
+  background-color: white;
+  color: black;
+  font-size: 3vw; /* Responsive font size */
+  font-weight: bold;
+  margin: auto; /* Center the text container */
+  /*padding: 10px;*/
+  width: 100%;
+  text-align: center; /* Center text */
+  position: absolute; /* Position text */
+  top: 70%; /* Position text in the middle */
+  left: 50%; /* Position text in the middle */
+  transform: translate(-50%, -50%); /* Position text in the middle */
+}
+
+
+}
+
+
+
+
+@media (max-width: 376px)
+{
+
+	header{
+	position: relative;
+	max-width: 97%;
+	margin: 20px auto;
+	padding: 10px;
+	background: #fff;
+	box-sizing: border-box;
+	border-radius: 4px;
+	box-shadow: 0 2px 5px rgba(0,0,0,.2);
+	}
+	.menu-toggle
+	{
+		display: block;
+		width: 40px;
+		height: 40px;
+		margin: 10px;
+		float: right;
+		cursor: pointer;
+		text-align: center;
+		font-size: 30px;
+		color: #069370;
+	}
+
+	.menu-toggle:before{
+		content: '\f00d';
+		font-family: fontAwesome;
+		line-height: 40px;
+	}
+
+	.menu-toggle.active:before{
+		content: '\f0c9';
+		
+	}
+
+	nav{
+		display: none;
+	}
+	nav.active{
+		
+
+		width: 100%;
+	}
+	nav.active ul{
+		
+
+	
+	}
+
+	nav.active ul li{
+		margin: 0;
+		background-color: transparent;
+	}
+
+
+
+
+
+
+.name {
+  background-color: white;
+  color: black;
+  font-size: 9vw; /* Responsive font size */
+  font-weight: bold;
+  margin: auto; /* Center the text container */
+  /*padding: 10px;*/
+  width: 100%;
+  text-align: center; /* Center text */
+  position: absolute; /* Position text */
+  top: 60%; /* Position text in the middle */
+  left: 50%; /* Position text in the middle */
+  transform: translate(-50%, -50%); /* Position text in the middle */
+  mix-blend-mode: screen; /* This makes the cutout text possible */
+}
+.job {
+  background-color: white;
+  color: black;
+  font-size: 6vw; /* Responsive font size */
+  font-weight: bold;
+  margin: auto; /* Center the text container */
+  /*padding: 10px;*/
+  width: 100%;
+  text-align: center; /* Center text */
+  position: absolute; /* Position text */
+  top: 66%; /* Position text in the middle */
+  left: 50%; /* Position text in the middle */
+  transform: translate(-50%, -50%); /* Position text in the middle */
+}
+
+
+}

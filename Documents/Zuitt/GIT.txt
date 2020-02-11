@@ -1,0 +1,29 @@
+git init
+- initializes a local git repository in the current directory
+* pwd to check if you're in the correct location prior to running git init
+* use one local git repository for one project, DO NOT create local repositories within local repositories
+
+git remote add <alias> <ssh clone string>
+- connects your local repository with an online repository
+- <alias> is user-defined, can be anything you want, preferably indicative of the nature of your project
+
+git remote -v
+- displays existing alias/es in your local git repository and their corresponding online repositories
+
+git remote remove <alias>
+- removes the specified alias
+
+git status
+- this shows us the "staging area" - a list of changes and their corresponding status
+- items in red are "untracked" meaning they haven't been added to the staging area yet
+- items in green are "tracked" meaning they're already in the staging are and are ready to be committed
+
+git add -A 
+- adds all untracked changes (red items)to the staging area, these changes will now be included the next time you commit
+
+git commit -m "commit message"
+- commits changes in the staging area (green items), these changes will all share the same commit message and are now ready to be pushed to your online repository
+
+git push <alias> <branchName> 
+* <branchName> = <master> by default
+- pushes changes to online repository

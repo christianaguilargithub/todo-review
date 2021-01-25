@@ -5,6 +5,7 @@ import Form from './components/Form';
 import TodoList from "./components/TodoList";
 
 function App() {
+
   const[inputText, setInputText]= useState("");
   const[todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
@@ -15,8 +16,6 @@ function App() {
       getLocalTodos();
     }, []
   );
-  
-  
    useEffect(
     function () {
        function filterHandler() {
@@ -33,7 +32,7 @@ function App() {
        }
        filterHandler();
      },[todos,status]);
-  
+
   function getLocalTodos() {
     if (localStorage.getItem("todos") === null) {
       localStorage.setItem("todos", JSON.stringify([]));
@@ -42,13 +41,11 @@ function App() {
       setTodos(todoLocal);
     }
   }
-
   return (
     <div className="App">
       <header>
         <h1>To Do List </h1>
       </header>
-
       <Form 
          inputText={inputText}
          todos={todos} 
@@ -56,13 +53,11 @@ function App() {
          setInputText={setInputText} 
          setStatus={setStatus} 
       />
-
       <TodoList 
           filteredTodos={filteredTodos} 
           setTodos={setTodos} 
           todos={todos}
-      />
-      
+      />  
     </div>
   );
 }

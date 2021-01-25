@@ -13,10 +13,8 @@
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
 .eslintcache
 
-debug.log*
+debug.log
 yarn-debug.log*
 yarn-error.log*

@@ -1,6 +1,5 @@
 import React from "react";
 
-<<<<<<< HEAD
 function Form({
                 setStatus,
                 setInputText,
@@ -9,35 +8,17 @@ function Form({
                 inputText
              })
             {
-=======
-function Form({ 
-                setStatus, 
-                setInputText, 
-                todos, 
-                setTodos, 
-                inputText
-             }) 
-            {   
->>>>>>> 9764fc1e86e71a85fae3a8d54b8b3d5cabc7f10f
         const inputTextHandler = (e) => {
                 setInputText(e.target.value);
              };
         const submitTodoHandler = (e) => {
                 e.preventDefault();
                 setTodos([
-<<<<<<< HEAD
                           ...todos,
                          {
                            text: inputText,
                            completed: false,
                            id: Math.random()
-=======
-                          ...todos, 
-                         {  
-                           text: inputText, 
-                           completed: false, 
-                           id: Math.random() 
->>>>>>> 9764fc1e86e71a85fae3a8d54b8b3d5cabc7f10f
                          }
                     ]);
                 setInputText("");

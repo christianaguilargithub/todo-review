@@ -17,7 +17,7 @@ function App() {
     }, []
   );
    useEffect(
-    function () {
+    () => {
        function filterHandler() {
          switch (status) {
            case 'completed':
@@ -32,18 +32,9 @@ function App() {
        }
        filterHandler();
      },[todos,status]);
-<<<<<<< HEAD
-    function getLocalTodos() {
-      if (localStorage.getItem("todos") == null) {
-        localStorage.setItem("todos", JSON.stringify([]));
-      } else {
-        let todoLocal = JSON.parse(localStorage.getItem("todos"));
-        setTodos(todoLocal);
-      }
-    };
-=======
 
   function getLocalTodos() {
+
     if (localStorage.getItem("todos") === null) {
       localStorage.setItem("todos", JSON.stringify([]));
     } else {
@@ -51,26 +42,25 @@ function App() {
       setTodos(todoLocal);
     }
   }
->>>>>>> 9764fc1e86e71a85fae3a8d54b8b3d5cabc7f10f
   return (
     <div className="App">
       <header>
         <h1>To Do List </h1>
       </header>
-      <Form 
+      <Form
          inputText={inputText}
-         todos={todos} 
-         setTodos={setTodos} 
-         setInputText={setInputText} 
-         setStatus={setStatus} 
+         todos={todos}
+         setTodos={setTodos}
+         setInputText={setInputText}
+         setStatus={setStatus}
       />
-      <TodoList 
-          filteredTodos={filteredTodos} 
-          setTodos={setTodos} 
+      <TodoList
+          filteredTodos={filteredTodos}
+          setTodos={setTodos}
           todos={todos}
-      />  
+      />
     </div>
   );
 }
- 
+
 export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Todo = ({text,todo, todos,setTodos}) => {
+const Todo = ({text,todo, todos,setTodos}) => {
     const deleteHandler = () => {
         setTodos(todos.filter((curTodo) => curTodo.id !==todo.id))
             };
@@ -17,7 +17,7 @@ export const Todo = ({text,todo, todos,setTodos}) => {
              }
         return(
             <div className="todo">
-                <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li>
+                <li className={`todo-item ${todo.completed}`}>{text}</li>
                 <button
                     type="button"
                     onClick={completeHandler}

@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import Form from './components/Form';
 import TodoList from "./components/TodoList";
 import getLocalTodos from "./utils/api/todos";
+import TodosFilter from "./utils/api/todos";
 
 import './App.css';
 
@@ -10,7 +11,7 @@ function App() {
 
   const[inputText, setInputText]= useState("");
   const[todos, setTodos] = useState([]);
-  const [status, setStatus] = useState("all");
+  const [filter, setFilter] = useState(TodosFilter.All)
   const [filteredTodos, setFilteredTodos] = useState([]);
   useEffect(()=>{
     const todos = getLocalTodos();
@@ -19,7 +20,7 @@ function App() {
    useEffect(
     () => {
        function filterHandler() {
-         switch (status) {
+         switch (filter) {
            case 'completed':
              setFilteredTodos(todos.filter(todo => todo.completed === true));
              break;
@@ -31,7 +32,7 @@ function App() {
          }
        }
        filterHandler();
-     },[todos,status]);
+     },[todos,filter]);
 
   return (
     <div className="App">
@@ -43,7 +44,7 @@ function App() {
          todos={todos}
          setTodos={setTodos}
          setInputText={setInputText}
-         setStatus={setStatus}
+         setStatus={setFilter}
       />
       <TodoList
           filteredTodos={filteredTodos}

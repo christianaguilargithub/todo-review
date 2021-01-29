@@ -1,8 +1,8 @@
 import React from 'react';
 import Todo from "./Todo";
 
-const TodoList = ({ todos, setTodos, filteredTodos }) => {
-        <div className="todo-container">
+const TodoList = ({ todos, setTodos, filteredTodos }) => (
+    <div className="todo-container">
            <ul className="todo-list">
                {filteredTodos.map(todo =>(
                    <Todo
@@ -15,5 +15,5 @@ const TodoList = ({ todos, setTodos, filteredTodos }) => {
                ))}
            </ul>
         </div>
-}
+);
 export default TodoList;

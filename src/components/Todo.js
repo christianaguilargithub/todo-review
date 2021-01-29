@@ -4,7 +4,7 @@ const Todo = ({text,todo, todos,setTodos}) => {
     const deleteHandler = () => {
         setTodos(todos.filter((curTodo) => curTodo.id !==todo.id))
             };
-    const completeHandler = () => {
+    const completeHandler = () => { 
         setTodos(todos.map(task =>{
             if(task.id === todo.id){
                      return{

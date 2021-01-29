@@ -6,4 +6,10 @@ export const getLocalTodos = () => {
     return [];
   }
 }
+export const TodosFilter = {
+  All: 'all',
+  Completed: 'completed',
+  Uncompleted: 'uncompleted',
+}
 export default getLocalTodos;
+

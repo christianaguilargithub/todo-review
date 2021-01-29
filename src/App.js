@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 
 import Form from './components/Form';
 import TodoList from "./components/TodoList";
+import getLocalTodos from "./utils/api/todos";
 
 import './App.css';
 
@@ -11,11 +12,10 @@ function App() {
   const[todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
-  useEffect(
-    function () {
-      getLocalTodos();
-    }, []
-  );
+  useEffect(()=>{
+    const todos = getLocalTodos();
+    setTodos(todos);
+  }, []);
    useEffect(
     () => {
        function filterHandler() {
@@ -33,15 +33,6 @@ function App() {
        filterHandler();
      },[todos,status]);
 
-  function getLocalTodos() {
-
-    if (localStorage.getItem("todos") === null) {
-      localStorage.setItem("todos", JSON.stringify([]));
-    } else {
-      let todoLocal = JSON.parse(localStorage.getItem("todos"));
-      setTodos(todoLocal);
-    }
-  }
   return (
     <div className="App">
       <header>

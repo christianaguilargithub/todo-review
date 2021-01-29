@@ -1,4 +1,5 @@
 import React from "react";
+import ShortUniqueId from 'https://cdn.jsdelivr.net/npm/short-unique-id@latest/short_uuid/mod.ts';
 
 function Form({
                 setStatus,
@@ -16,9 +17,9 @@ function Form({
                 setTodos([
                           ...todos,
                          {
+                           id: ShortUniqueId,
                            text: inputText,
                            completed: false,
-                           id: Math.random()
                          }
                     ]);
                 setInputText("");

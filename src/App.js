@@ -5,10 +5,10 @@ import TodoList from "./components/TodoList";
 import getLocalTodos from "./utils/api/todos";
 import TodosFilter from "./utils/api/todos";
 
+
 import './App.css';
 
 function App() {
-
   const[inputText, setInputText]= useState("");
   const[todos, setTodos] = useState([]);
   const [filter, setFilter] = useState(TodosFilter.All)
@@ -18,11 +18,10 @@ function App() {
     setTodos(todos);
   }, []);
    useEffect(
-    () => {
        function filterHandler() {
          switch (filter) {
            case 'completed':
-             setFilteredTodos(todos.filter(todo => todo.completed === true));
+             setFilteredTodos(todos.filter(todo => todo.completed));
              break;
            case 'uncompleted':
              setFilteredTodos(todos.filter(todo => todo.completed === false));
@@ -30,10 +29,7 @@ function App() {
            default:
              setFilteredTodos(todos);
          }
-       }
-       filterHandler();
-     },[todos,filter]);
-
+       },[todos,filter]);
   return (
     <div className="App">
       <header>

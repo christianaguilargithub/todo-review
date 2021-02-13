@@ -14,7 +14,7 @@ function Form({
         };
         const submitTodoHandler = (e) => {
                 e.preventDefault();
-                inputText.length === 0 && e.target.value===" " ?
+                inputText.length === 0  ?
                 alert('Required Input')
                 :
                 setTodos([

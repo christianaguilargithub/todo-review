@@ -7,12 +7,16 @@ function Form({
                 setTodos,
                 inputText
              })
+
             {
         const inputTextHandler = (e) => {
-                setInputText(e.target.value);
-             };
+            setInputText(e.target.value)
+        };
         const submitTodoHandler = (e) => {
                 e.preventDefault();
+                inputText.length === 0 && e.target.value===" " ?
+                alert('Required Input')
+                :
                 setTodos([
                           ...todos,
                          {

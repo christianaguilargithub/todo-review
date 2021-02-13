@@ -10,6 +10,7 @@ import './App.css';
 
 function App() {
   const[inputText, setInputText]= useState("");
+  const[error, setError]= useState();
   const[todos, setTodos] = useState([]);
   const [filter, setFilter] = useState(TodosFilter.All)
   const [filteredTodos, setFilteredTodos] = useState([]);
@@ -41,6 +42,8 @@ function App() {
          setTodos={setTodos}
          setInputText={setInputText}
          setStatus={setFilter}
+         setError={setError}
+         error={error}
       />
       <TodoList
           filteredTodos={filteredTodos}

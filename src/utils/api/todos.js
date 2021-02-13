@@ -11,5 +11,6 @@ export const TodosFilter = {
   Completed: 'completed',
   Uncompleted: 'uncompleted',
 }
+
 export default getLocalTodos;
 

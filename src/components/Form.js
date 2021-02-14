@@ -7,10 +7,10 @@ function Form({
                 setTodos,
                 inputText
              })
-
             {
+        const date = (new Date()).toISOString()
         const inputTextHandler = (e) => {
-            setInputText(e.target.value)
+            setInputText(e.target.value.trim())
         };
         const submitTodoHandler = (e) => {
                 e.preventDefault();
@@ -20,7 +20,7 @@ function Form({
                 setTodos([
                           ...todos,
                          {
-                           id: Math.random(),
+                           id: date,
                            text: inputText,
                            completed: false,
                          }

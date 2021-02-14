@@ -12,6 +12,7 @@ const Todo = ({text,todo, todos,setTodos}) => {
               : task.completed
           })));
              }
+             console.log(todo.id)
         return(
             <div className="todo">
                 <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li>

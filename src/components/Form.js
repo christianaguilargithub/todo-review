@@ -10,10 +10,11 @@ function Form({
             {
         const date = (new Date()).toISOString()
         const inputTextHandler = (e) => {
-            setInputText(e.target.value.trim())
+            setInputText(e.target.value)
         };
         const submitTodoHandler = (e) => {
                 e.preventDefault();
+                inputText.trim()
                 inputText.length === 0  ?
                 alert('Required Input')
                 :
@@ -31,6 +32,7 @@ function Form({
             setStatus(e.target.value);
      }
     return (
+        <div>
         <form>
             <input
                 value={inputText}
@@ -55,6 +57,7 @@ function Form({
                 </select>
             </div>
         </form>
+        </div>
     );
 }
 export default Form;

@@ -137,3 +137,9 @@ select {
   transform: scale(1.5);
 }
 */
+.errorText{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  color: red;
+}

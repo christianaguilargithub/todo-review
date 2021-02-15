@@ -36,20 +36,23 @@ function App() {
       <header>
         <h1>To Do List </h1>
       </header>
-      <Form
-         inputText={inputText}
-         todos={todos}
-         setTodos={setTodos}
-         setInputText={setInputText}
-         setStatus={setFilter}
-         setError={setError}
-         error={error}
-      />
-      <TodoList
-          filteredTodos={filteredTodos}
-          setTodos={setTodos}
+      <main>
+        <Form
+          inputText={inputText}
           todos={todos}
-      />
+          setTodos={setTodos}
+          setInputText={setInputText}
+          setStatus={setFilter}
+          setError={setError}
+          error={error}
+        />
+
+        <TodoList
+            filteredTodos={filteredTodos}
+            setTodos={setTodos}
+            todos={todos}
+        />
+      </main>
     </div>
   );
 }

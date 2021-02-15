@@ -14,6 +14,10 @@ function Form({
         };
         const submitTodoHandler = (e) => {
                 e.preventDefault();
+                const isEmpty = (empty) => !inputText.trim().length
+                if (isEmpty(inputText)){
+                    alert('hindi pwedeng white space lang oy!')
+                } else{
                 inputText.trim()
                 inputText.length === 0  ?
                 alert('Required Input')
@@ -28,6 +32,7 @@ function Form({
                     ]);
                 setInputText("");
             }
+        }
         const statusHandler = (e) =>{
             setStatus(e.target.value);
      }
